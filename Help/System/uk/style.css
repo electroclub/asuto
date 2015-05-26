@@ -1,0 +1,59 @@
+body {
+	counter-reset: rozdil;
+	font-family: "Times New Roman",serif;
+	font-size: 10pt }
+
+div.title {
+	counter-reset: part;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: center }
+	
+@media screen {
+	div.title {
+		margin-top: 1em;
+		margin-bottom: 2em;
+	}
+}
+@media print {
+	div.title {
+		margin-top: 10cm;
+		page-break-after: always;
+	}
+}
+
+h1  {
+	counter-reset: subpart;
+	counter-increment: part;
+	font-size: 12pt }
+   
+h1:before {
+	content: counter(part) ". " }
+
+h2  {
+	counter-reset: punkt;
+	counter-increment: subpart;
+	font-size: 11pt }
+	
+h2:before {
+	content: counter(part) "." counter(subpart) ". " }
+	
+p.level2:before {
+	counter-increment: subpart;
+	content: counter(part) "." counter(subpart) ". " }
+
+h3,
+p.level3 {
+	counter-reset: subpunkt;
+	counter-increment: punkt }
+	
+h3:before,
+p.level3:before {
+	content: counter(part) "." counter(subpart) "." counter(punkt) ". " }
+
+p.level4  {
+	counter-increment: subpunkt }
+p.level4:before {
+	content: counter(part) "." counter(subpart)  "." counter(punkt)  "." counter(subpart) ". " }
+
+</style>
